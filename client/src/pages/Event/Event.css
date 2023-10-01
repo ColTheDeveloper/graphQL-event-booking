@@ -1,0 +1,33 @@
+.Event{
+    position: relative;
+    height: 80vh;
+
+}
+.event-first-section{
+    text-align: center;
+    padding: 2rem;
+    border-radius: 5px;
+    border: 1px solid var(--text-color);
+    margin:0 auto ;
+    width: 30rem;
+    max-width: 90%;
+}
+.event-first-section>p{
+    margin-bottom: .7rem;
+}
+.modal-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.927);
+}
+.event-container{
+    width: 50rem;
+    max-width: 90%;
+    margin: 1rem auto;
+}

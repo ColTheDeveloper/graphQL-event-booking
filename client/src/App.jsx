@@ -2,33 +2,36 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import {BrowserRouter, Route,Routes} from "react-router-dom"
+import Auth from './pages/Auth/Auth'
+import Event from './pages/Event/Event'
+import Booking from './pages/Booking/Booking'
+import Layout from './components/Layout/Layout'
+import AuthProvider from './context/AuthContext'
+import ProtectedRoute, { UnAccessableWhileLoggedin } from './components/ProtectedRoute/ProtectedRoute'
 
 function App() {
   const [count, setCount] = useState(0)
+  console.log(import.meta.env.VITE_API_URL)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='App'>
+      <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Layout />} >
+            <Route index element={<Event />} />
+            <Route element={<UnAccessableWhileLoggedin />} >
+              <Route path='/auth' element={<Auth />} />
+            </Route>
+            <Route element={<ProtectedRoute />} >
+              <Route path='/bookings' element={<Booking />} />
+            </Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      </AuthProvider>
+    </div>
   )
 }
 

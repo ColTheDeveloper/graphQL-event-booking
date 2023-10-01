@@ -1,0 +1,16 @@
+.Navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.Navbar>div:nth-of-type(1)>h1{
+    font-size: 1.9rem;
+}
+.Navbar>div:nth-of-type(2){
+    display: flex;
+    gap: .5rem;
+}
+.Navbar>div:nth-of-type(2)>a{
+    cursor: pointer;
+}

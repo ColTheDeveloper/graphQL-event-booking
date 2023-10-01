@@ -14,7 +14,7 @@ const schema=buildSchema(`
         title:String!
         description:String!
         price:Float!
-        date:String!
+        date:String
         creator:User!
     }
 
@@ -23,8 +23,6 @@ const schema=buildSchema(`
         email:String!
         password:String
         createdEvent:[Event]!
-
-
     }
 
     type AuthData{
@@ -53,7 +51,7 @@ const schema=buildSchema(`
 
     type RootMutation{
         createEvent(eventInput:EventInput):Event
-        createUser(userInput:UserInput):User
+        createUser(userInput:UserInput):AuthData!
         bookEvent(eventId:ID!):Booking!
         cancelBooking(bookingId:ID!):Event!
     }

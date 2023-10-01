@@ -1,0 +1,23 @@
+.single-event{
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem 1rem ;
+    border: 1px solid var(--text-color);
+    margin-bottom: .7rem;
+    border-radius: 5px;
+}
+.single-event>div:nth-of-type(1)>h2{
+    color: var(--secondadry-text--color);
+
+}
+.single-event>div:nth-of-type(2){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.event-details{
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}

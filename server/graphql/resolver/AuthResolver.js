@@ -14,7 +14,19 @@ const createUser=async(args)=>{
         })
         const newUser=await createdUser.save()
         const user=newUser._doc
-        return {...user,password:null}
+
+        const token=jwt.sign(
+            {userId:user._id,email:user.email},
+            process.env.ACCESS_TOKEN,
+            {expiresIn: "1h"}
+        )
+
+        return{
+            userId:user._id,
+            token:token,
+            exp:1
+        }
+        
     } catch (error) {
         console.log(error)
         throw error

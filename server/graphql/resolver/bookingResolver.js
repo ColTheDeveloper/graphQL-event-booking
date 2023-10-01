@@ -26,7 +26,7 @@ const bookEvent=async (args,req)=>{
     }
 }
 
-const cancelBooking=async args=>{
+const cancelBooking=async (args,req)=>{
     if(!req.isAuth) throw new Error("Unauthorized")
     try {
         const booking= await bookingModel.findById(args.bookingId).populate("event")
@@ -43,9 +43,9 @@ const cancelBooking=async args=>{
     }
 }
 
-const getAllBookings=async ()=>{
+const getAllBookings=async (args,req)=>{
     try {
-        const bookings=await bookingModel.find()
+        const bookings=await bookingModel.find({user:req.userId})
 
         return bookings.map((booking)=>{
             return{
